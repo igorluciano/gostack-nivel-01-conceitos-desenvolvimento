@@ -1,6 +1,6 @@
 import React from "react";
 
-ConfiguraCCCCCCexport default function Header({ title, children }) {
+export default function Header({ title, children }) {
   return (
     <header>
       <h1>{title}</h1>

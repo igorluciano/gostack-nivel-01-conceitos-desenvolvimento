@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./components/Header";
 
 /**
@@ -8,20 +8,26 @@ import Header from "./components/Header";
  * - Estado
  */
 export default function App() {
+  const [projects, setProjects] = useState([
+    "Desenvolvimento de Aplicativos",
+    "Criação de sites",
+  ]);
+
+  function handleAddProject() {
+    setProjects([...projects, `Novo Projeto ${Date.now()}`]);
+    console.log(projects);
+  }
+
   return (
     <>
-      <Header title="HomePage">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-        </ul>
-      </Header>
       <Header title="Projects">
+        <button type="button" onClick={handleAddProject}>
+          Add project
+        </button>
         <ul>
-          <li>All</li>
-          <li>Search</li>
-          <li>New</li>
+          {projects.map((project) => (
+            <li key={project}>{project}</li>
+          ))}
         </ul>
       </Header>
     </>
