@@ -1,3 +1,5 @@
-const { soma } = require("./soma");
+import React from "react";
+import { render } from "react-dom";
+import App from "./App";
 
-console.log(soma(2, 1));
+render(<App />, document.getElementById("app"));
