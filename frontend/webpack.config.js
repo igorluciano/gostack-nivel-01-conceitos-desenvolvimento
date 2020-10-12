@@ -1,3 +1,10 @@
+/**
+ * Webpack
+ * 
+ * É um empacotador de módulo e que para para cada tipo de arquivo (.js, .css, .png) realiza uma conversão diferente por meios dos loaders
+ * - Loaders: babel-loader, image-loader, css-loader
+ */
+
 const path = require("path");
 
 module.exports = {
