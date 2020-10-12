@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "babel-transpile":"yarn babel src/** -d public/dist",
-    "webpack-transpile": "yarn webpack --mode development",
-    "webpack-serve": "yarn webpack serve --mode development",
-    "webpack-build": "yarn webpack-transpile && yarn webpack-serve"
+    "compile": "yarn babel src/** -d public/dist",
+    "build": "yarn webpack --mode development",
+    "dev": "yarn webpack serve --mode development"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,8 +14,11 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "babel-loader": "^8.1.0",
+    "css-loader": "^4.3.0",
+    "file-loader": "^6.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "style-loader": "^2.0.0",
     "webpack": "^5.0.0",
     "webpack-cli": "^4.0.0"
   },

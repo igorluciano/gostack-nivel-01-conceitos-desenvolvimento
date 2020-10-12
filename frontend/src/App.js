@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
+import "./App.css";
+import backgroundImage from "./assets/background.png";
 
 /**
  * Principais Conceitos do React:
@@ -21,6 +23,8 @@ export default function App() {
   return (
     <>
       <Header title="Projects">
+        <img src={backgroundImage} width={300} alt="Image" />
+        <br />
         <button type="button" onClick={handleAddProject}>
           Add project
         </button>

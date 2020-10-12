@@ -1,6 +1,6 @@
 /**
  * Webpack
- * 
+ *
  * É um empacotador de módulo e que para para cada tipo de arquivo (.js, .css, .png) realiza uma conversão diferente por meios dos loaders
  * - Loaders: babel-loader, image-loader, css-loader
  */
@@ -23,7 +23,27 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: "babel-loader", // Converter o JS para que o browser entenda
+        },
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: "style-loader",
+          }, // Injeta o CSS na tag <style> da página
+          {
+            loader: "css-loader",
+          }, // Interpreta o CSS do arquivo de folha de estilo
+        ],
+      },
+      {
+        test: /.*\.(gif|png|jpe?g)$/i,
+        exclude: /node_modules/,
+        use: {
+          loader: "file-loader",
+          // Possibilita importar imagens dentro do JS
         },
       },
     ],
