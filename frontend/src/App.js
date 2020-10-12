@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import "./App.css";
 import backgroundImage from "./assets/background.png";
+import "./services/api";
+import api from "./services/api";
+import Axios from "axios";
 
 /**
  * Principais Conceitos do React:
@@ -10,14 +13,22 @@ import backgroundImage from "./assets/background.png";
  * - Estado
  */
 export default function App() {
-  const [projects, setProjects] = useState([
-    "Desenvolvimento de Aplicativos",
-    "Criação de sites",
-  ]);
+  const [projects, setProjects] = useState([]);
 
-  function handleAddProject() {
-    setProjects([...projects, `Novo Projeto ${Date.now()}`]);
-    console.log(projects);
+  useEffect(() => {
+    api.get("/projects").then((response) => {
+      setProjects(response.data);
+    });
+  }, []);
+
+  async function handleAddProject() {
+    const response = await api.post("/projects", {
+      title: `Novo Projeto ${Date.now()}`,
+      owner: "Igor",
+    });
+
+    const project = response.data;
+    setProjects([...projects, project]);
   }
 
   return (
@@ -30,7 +41,7 @@ export default function App() {
         </button>
         <ul>
           {projects.map((project) => (
-            <li key={project}>{project}</li>
+            <li key={project.id}>{project.title}</li>
           ))}
         </ul>
       </Header>
